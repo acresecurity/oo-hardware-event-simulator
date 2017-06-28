@@ -1,0 +1,55 @@
+﻿<Window x:Class="HardwareEvents.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:converters="clr-namespace:HardwareEvents.Converters"
+        Title="Generate Hardware Events"
+        Height="760" Width="1024" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.Resources>
+            <converters:VisibilityConverter x:Key="VisibilityConverter"/>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <TreeView x:Name="HardwareTreeView" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" ItemsSource="{Binding ViewModel, Mode=OneWay}"/>
+
+        <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical" Margin="5,5,5,0" MinWidth="200" DataContext="{Binding ElementName=HardwareTreeView, Mode=OneWay}">
+            <TextBlock Text="Select events for:"/>
+            <ContentPresenter Content="{Binding SelectedItem, Mode=OneWay}" Margin="8"/>
+            <TextBlock Foreground="DarkRed"
+                       DataContext="{Binding SelectedItem}"
+                       Visibility="{Binding IsChildOfDoor, Mode=OneWay, Converter={StaticResource VisibilityConverter}, FallbackValue=Collapsed}">
+                <Run Text="Once an item is part of a door the events are "/>
+                <LineBreak />
+                <Run Text="associated to the door not the individual items."/>
+            </TextBlock>
+        </StackPanel>
+        
+        <ListBox x:Name="EventsListBox" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Margin="8"
+                 DataContext="{Binding SelectedItem, ElementName=HardwareTreeView, Mode=OneWay}"
+                 IsEnabled="{Binding IsChildOfDoor, Mode=OneWay, Converter={StaticResource InvertedBoolean}}"
+                 ItemsSource="{Binding Events, Mode=OneWay}"
+                 SelectedItem="{Binding SelectedItem, ElementName=HardwareTreeView, Mode=OneWay}"/>
+
+        <StackPanel Grid.Column="0" Grid.Row="2" Margin="8" Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Pulse Events Delay" Target="{Binding ElementName=PulseTextBox}" IsEnabled="{Binding EventsActive, Mode=OneWay, Converter={StaticResource InvertedBoolean}}"/>
+                <TextBox x:Name="PulseTextBox" MinWidth="50" Margin="5,2,0,2" Text="{Binding PulseDelay, Mode=TwoWay}" IsEnabled="{Binding EventsActive, Mode=OneWay, Converter={StaticResource InvertedBoolean}}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="8,0,0,0">
+                <Label Content="Events Per Pulse" Target="{Binding ElementName=PerPulseTextBox}" IsEnabled="{Binding EventsActive, Mode=OneWay, Converter={StaticResource InvertedBoolean}}"/>
+                <TextBox x:Name="PerPulseTextBox" MinWidth="50" Margin="5,2,0,2" Text="{Binding Repeat, Mode=TwoWay}" IsEnabled="{Binding EventsActive, Mode=OneWay, Converter={StaticResource InvertedBoolean}}"/>
+            </StackPanel>
+            <CheckBox Margin="5,0,0,0" Content="Randomize" IsChecked="{Binding Randomize, Mode=TwoWay}" IsEnabled="{Binding EventsActive, Mode=OneWay, Converter={StaticResource InvertedBoolean}}" VerticalAlignment="Center"/>
+            <Button Margin="8,0,0,0" Padding="5" Content="Start" Command="{Binding StartEventGenerationCommand}"/>
+            <Button Margin="8,0,0,0" Padding="5" Content="Stop" Command="{Binding StopEventGenerationCommand}"/>
+        </StackPanel>
+    </Grid>
+</Window>

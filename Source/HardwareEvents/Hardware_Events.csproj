@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1C252551-239D-47AF-9812-894AA240EB5F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HardwareEvents</RootNamespace>
+    <AssemblyName>HardwareEvents</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CookComputing.XmlRpcV2, Version=3.0.0.0, Culture=neutral, PublicKeyToken=a7d6e17aa302004d, processorArchitecture=MSIL">
+      <HintPath>packages\xmlrpcnet.3.0.0.266\lib\net20\CookComputing.XmlRpcV2.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Compile Include="Collections\BaseCollection.cs" />
+    <Compile Include="Collections\ElevatorCollection.cs" />
+    <Compile Include="Collections\MacroCollection.cs" />
+    <Compile Include="Converters\BaseAssetImageConverter.cs" />
+    <Compile Include="Converters\BaseEventConverter.cs" />
+    <Compile Include="Converters\EventAddressToImage.cs" />
+    <Compile Include="Converters\EventCardTypeToImage.cs" />
+    <Compile Include="Converters\EventDescription.cs" />
+    <Compile Include="Converters\EventIdToGridColor.cs" />
+    <Compile Include="Converters\EventToPersonnelPhotoIcon.cs" />
+    <Compile Include="Converters\EventToPersonnelType.cs" />
+    <Compile Include="Converters\HideDateTimeValue.cs" />
+    <Compile Include="Converters\InvertedBoolean.cs" />
+    <Compile Include="Converters\VisibilityConverter.cs" />
+    <Compile Include="DataVirtualization\IItemsProvider.cs" />
+    <Compile Include="DataVirtualization\VirtualCollectionProvider.cs" />
+    <Compile Include="DataVirtualization\VirtualizingCollection.cs" />
+    <Compile Include="Extensions\IEnumerableExtension.cs" />
+    <Compile Include="FlexAPI\OpenOptions.dnaFusion.Flex.Common.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FlexAPI\OpenOptions.dnaFusion.Flex.V1.cs" />
+    <Compile Include="Helpers\DelegateCommand.cs" />
+    <Compile Include="Helpers\DoorModeIcon.cs" />
+    <Compile Include="Extensions\DateTimeExtension.cs" />
+    <Compile Include="Extensions\ObjectExtension.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\TreeViewExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FlexProvider.cs" />
+    <Compile Include="Helpers\BitFields.cs" />
+    <Compile Include="Helpers\DummyNode.cs" />
+    <Compile Include="Converters\EventColor.cs" />
+    <Compile Include="Converters\EventGridColor.cs" />
+    <Compile Include="Converters\EventTypes.cs" />
+    <Compile Include="Helpers\PackedAddress.cs" />
+    <Compile Include="Interfaces\ICardFlags.cs" />
+    <Compile Include="Interfaces\ICardType.cs" />
+    <Compile Include="Interfaces\IPackedAddress.cs" />
+    <Compile Include="Interfaces\IPopulation.cs" />
+    <Compile Include="Converters\AtFaultConverter.cs" />
+    <Compile Include="Interfaces\IFlexProvider.cs" />
+    <Compile Include="Models\DoorViewModel.cs" />
+    <Compile Include="Models\ElevatorViewModel.cs" />
+    <Compile Include="Models\EventSelectionModel.cs" />
+    <Compile Include="Models\GenericSelectionModel.cs" />
+    <Compile Include="Partial Classes\IEventGenerator.cs" />
+    <Compile Include="Models\InfoReadyBaseModel.cs" />
+    <Compile Include="Models\InfoReadyTraceHistoryBaseModel.cs" />
+    <Compile Include="Models\ModelBase.cs" />
+    <Compile Include="Partial Classes\DNAElevator.cs" />
+    <Compile Include="Partial Classes\DNAController.cs" />
+    <Compile Include="Partial Classes\DNADoor.cs" />
+    <Compile Include="Partial Classes\DNAFloor.cs" />
+    <Compile Include="Partial Classes\DNAInputPoint.cs" />
+    <Compile Include="Partial Classes\DNAMacro.cs" />
+    <Compile Include="Partial Classes\DNAMonitorPointGroup.cs" />
+    <Compile Include="Partial Classes\DNAOutputPoint.cs" />
+    <Compile Include="Partial Classes\DNAReader.cs" />
+    <Compile Include="Partial Classes\DNASubController.cs" />
+    <Compile Include="Partial Classes\DNATraceHistory.cs" />
+    <Compile Include="Partial Classes\IDNAStatus.cs" />
+    <Compile Include="Partial Classes\WhoDoesNotHaveAccessToDoor.cs" />
+    <Compile Include="Partial Classes\WhoHasAccessToDoor.cs" />
+    <Compile Include="TinyIoC.cs" />
+    <Compile Include="User Controls\CircularProgressBar.xaml.cs">
+      <DependentUpon>CircularProgressBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Partial Classes\DNATimeSchedule.cs" />
+    <Compile Include="Collections\DoorCollection.cs" />
+    <Compile Include="Helpers\DummyLoadingObject.cs" />
+    <Compile Include="Collections\MonitorPointGroupCollection.cs" />
+    <Compile Include="Collections\TimeScheduleCollection.cs" />
+    <Compile Include="Helpers\ViewportHelper.cs" />
+    <Compile Include="Helpers\VisualTreeHelper.cs" />
+    <Compile Include="Windows\InfoReadyDoorTraceHistory.xaml.cs">
+      <DependentUpon>InfoReadyDoorTraceHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\InfoReadyWhoDoesNotHaveAccessToDoor.xaml.cs">
+      <DependentUpon>InfoReadyWhoDoesNotHaveAccessToDoor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\InfoReadyWhoHasAccessToDoor.xaml.cs">
+      <DependentUpon>InfoReadyWhoHasAccessToDoor.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Assets\generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User Controls\CircularProgressBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\ControllerViewModel.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Windows\InfoReadyDoorTraceHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\InfoReadyWhoDoesNotHaveAccessToDoor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\InfoReadyWhoHasAccessToDoor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Ack.png" />
+    <Resource Include="Assets\Alarm Priority 1.png" />
+    <Resource Include="Assets\Alarm Priority 10.png" />
+    <Resource Include="Assets\Alarm Priority 12.png" />
+    <Resource Include="Assets\Alarm Priority 13.png" />
+    <Resource Include="Assets\Alarm Priority 14.png" />
+    <Resource Include="Assets\Alarm Priority 15.png" />
+    <Resource Include="Assets\Alarm Priority 16.png" />
+    <Resource Include="Assets\Alarm Priority 2.png" />
+    <Resource Include="Assets\Alarm Priority 3.png" />
+    <Resource Include="Assets\Alarm Priority 4.png" />
+    <Resource Include="Assets\Alarm Priority 5.png" />
+    <Resource Include="Assets\Alarm Priority 6.png" />
+    <Resource Include="Assets\Alarm Priority 7.png" />
+    <Resource Include="Assets\Alarm Priority 8.png" />
+    <Resource Include="Assets\Alarm Priority 9.png" />
+    <Resource Include="Assets\Alarm.png" />
+    <Resource Include="Assets\Alarms.png" />
+    <Resource Include="Assets\Area.png" />
+    <Resource Include="Assets\Area2.png" />
+    <Resource Include="Assets\Arm.png" />
+    <Resource Include="Assets\Asset.png" />
+    <Resource Include="Assets\Camera1.png" />
+    <Resource Include="Assets\Camera2.png" />
+    <Resource Include="Assets\Camera3.png" />
+    <Resource Include="Assets\Card1.png" />
+    <Resource Include="Assets\Card2.png" />
+    <Resource Include="Assets\COM.png" />
+    <Resource Include="Assets\Contact.png" />
+    <Resource Include="Assets\Contract.png" />
+    <Resource Include="Assets\CP.png" />
+    <Resource Include="Assets\Custom1.png" />
+    <Resource Include="Assets\Custom2.png" />
+    <Resource Include="Assets\Custom3.png" />
+    <Resource Include="Assets\Custom4.png" />
+    <Resource Include="Assets\Custom5.png" />
+    <Resource Include="Assets\Disarm.png" />
+    <Resource Include="Assets\Door.png" />
+    <Resource Include="Assets\Door1.png" />
+    <Resource Include="Assets\Door2.png" />
+    <Resource Include="Assets\DoorGroup.png" />
+    <Resource Include="Assets\DVR.png" />
+    <Resource Include="Assets\DVR_CAM.png" />
+    <Resource Include="Assets\DVR_INPUT.png" />
+    <Resource Include="Assets\DVR_MON.png" />
+    <Resource Include="Assets\DVR_OUTPUT.png" />
+    <Resource Include="Assets\EL1.png" />
+    <Resource Include="Assets\EL2.png" />
+    <Resource Include="Assets\EL3.png" />
+    <Resource Include="Assets\Elevator.png" />
+    <Resource Include="Assets\Elevator1.png" />
+    <Resource Include="Assets\Elevator2.png" />
+    <Resource Include="Assets\Find.png" />
+    <Resource Include="Assets\Folder.png" />
+    <Resource Include="Assets\Globe.png" />
+    <Resource Include="Assets\Homepage.png" />
+    <Resource Include="Assets\Keypad.png" />
+    <Resource Include="Assets\Macro.png" />
+    <Resource Include="Assets\MacroCommand.png" />
+    <Resource Include="Assets\Mask1.png" />
+    <Resource Include="Assets\Mask2.png" />
+    <Resource Include="Assets\Mask3.png" />
+    <Resource Include="Assets\Mask4.png" />
+    <Resource Include="Assets\Mask5.png" />
+    <Resource Include="Assets\Misc.png" />
+    <Resource Include="Assets\MP.png" />
+    <Resource Include="Assets\MPG2.png" />
+    <Resource Include="Assets\Network.png" />
+    <Resource Include="Assets\Network2.png" />
+    <Resource Include="Assets\OSC16.png" />
+    <Resource Include="Assets\Peripheral.png" />
+    <Resource Include="Assets\Peripheral_AI.png" />
+    <Resource Include="Assets\Peripheral_AO.png" />
+    <Resource Include="Assets\Peripheral_BI.png" />
+    <Resource Include="Assets\Peripheral_BO.png" />
+    <Resource Include="Assets\Peripheral_CA.png" />
+    <Resource Include="Assets\Peripheral_DC.png" />
+    <Resource Include="Assets\Peripheral_DI.png" />
+    <Resource Include="Assets\Peripheral_DO.png" />
+    <Resource Include="Assets\Peripheral_DT.png" />
+    <Resource Include="Assets\Peripheral_DV.png" />
+    <Resource Include="Assets\Peripheral_MP.png" />
+    <Resource Include="Assets\Peripheral_OT.png" />
+    <Resource Include="Assets\Peripheral_SP1.png" />
+    <Resource Include="Assets\Peripheral_SP2.png" />
+    <Resource Include="Assets\Peripheral_Sub.png" />
+    <Resource Include="Assets\Peripheral_TX.png" />
+    <Resource Include="Assets\Phone1.png" />
+    <Resource Include="Assets\Phone2.png" />
+    <Resource Include="Assets\Photo.png" />
+    <Resource Include="Assets\Reader.png" />
+    <Resource Include="Assets\Rex.png" />
+    <Resource Include="Assets\RSC1.png" />
+    <Resource Include="Assets\RSC2.png" />
+    <Resource Include="Assets\RSCT.png" />
+    <Resource Include="Assets\RTN.png" />
+    <Resource Include="Assets\SSP.png" />
+    <Resource Include="Assets\SSPC.png" />
+    <Resource Include="Assets\SSPE.png" />
+    <Resource Include="Assets\Strike.png" />
+    <Resource Include="Assets\Temp.png" />
+    <Resource Include="Assets\TM_TS.png" />
+    <Resource Include="Assets\Tools.png" />
+    <Resource Include="Assets\Trigger.png" />
+    <Resource Include="Assets\TS.png" />
+    <Resource Include="Assets\Unknown1.png" />
+    <Resource Include="Assets\Unknown2.png" />
+    <Resource Include="Assets\Vendor.png" />
+    <Resource Include="Assets\Visitor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\MPG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Active.png" />
+    <Resource Include="Assets\CardOnly.png" />
+    <Resource Include="Assets\Card_Or_Pin.png" />
+    <Resource Include="Assets\Card_Pin.png" />
+    <Resource Include="Assets\Disabled.png" />
+    <Resource Include="Assets\FacilityCode.png" />
+    <Resource Include="Assets\Locked.png" />
+    <Resource Include="Assets\No State.png" />
+    <Resource Include="Assets\Normal.png" />
+    <Resource Include="Assets\Offline.png" />
+    <Resource Include="Assets\Online.png" />
+    <Resource Include="Assets\PinOnly.png" />
+    <Resource Include="Assets\Undefined.png" />
+    <Resource Include="Assets\Unlocked.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

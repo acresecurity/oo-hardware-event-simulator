@@ -1,0 +1,62 @@
+﻿<Window x:Class="HardwareEvents.Windows.InfoReadyWhoHasAccessToDoor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:converters="clr-namespace:HardwareEvents.Converters"
+        mc:Ignorable="d"
+        Title="InfoReady" Width="860" Height="560" WindowStartupLocation="CenterScreen" >
+    <Grid x:Name="LayoutRoot">
+        <Grid.Resources>
+            <converters:HideDateTimeValue x:Key="HideDateTimeValue"/>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" x:Name="AboveGrid" Margin="8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Who Has Access To This Door:" Margin="0,0,5,0"/>
+                <TextBlock Grid.Column="1" FontWeight="Bold">
+                                <Run Text="{Binding PackedAddressToStr, Mode=OneWay}"/><Run Text=":"/>
+                                <Run Text="{Binding Description, Mode=OneWay}"/>
+                </TextBlock>
+            </Grid>
+        </Grid>
+
+        <DataGrid x:Name="InfoGridView" Grid.Row="1" Margin="8" IsReadOnly="True" AutoGenerateColumns="False" CanUserSortColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" />
+                <DataGridTextColumn Header="FirstName" Binding="{Binding FirstName}" />
+                <DataGridTextColumn Header="AL" Binding="{Binding AccessLevel}" />
+                <DataGridTextColumn Header="AL Description" Binding="{Binding ALDescription}" />
+                <DataGridTextColumn Header="TS" Binding="{Binding TimeSchedule}" />
+                <DataGridTextColumn Header="TenantID" Binding="{Binding Tenant}" />
+                <DataGridTextColumn Header="Card Number" Binding="{Binding LegacyCardNumber}" />
+                <DataGridTextColumn Header="Active" Binding="{Binding Active}" />
+                <DataGridTextColumn Header="Department" Binding="{Binding Department}" />
+                <DataGridTextColumn Header="Location" Binding="{Binding Location}" />
+                <DataGridTextColumn Header="Title" Binding="{Binding Title}" />
+                <DataGridTextColumn Header="Start Date" Binding="{Binding StartDate, Converter={StaticResource HideDateTimeValue}}"/>
+                <DataGridTextColumn Header="Stop Date" Binding="{Binding StopDate, Converter={StaticResource HideDateTimeValue}}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Grid.Row="2" x:Name="BelowGrid">
+            <TextBlock Margin="8">
+                <Run Text="Record Count:" FontWeight="Bold"/>
+                <Run Text="{Binding Count}" />
+            </TextBlock>
+        </Grid>
+    </Grid>
+</Window>
